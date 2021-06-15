@@ -21,14 +21,14 @@ void kayit_ekle(FILE *fl)
     fl=fopen("personel.txt","r+");
     system("cls");
     int say;
-    fseek(fl,sizeof(say),SEEK_SET);// bu kısımda kisi sayısı bilgimizi textten okuyarak say degiskenine atıyoruz
+    fseek(fl,sizeof(say),SEEK_SET);
     fread(&say,sizeof(say),1,fl);
     struct Personel calisan;
     struct Personel kontrol;
-    for(int i=1;i<(say+1);i++){//for say degiskeni kadar dönerek listedeki tüm bos verileri kontrol ediyoruz
-        fseek(fl,i*boyut,SEEK_SET);//kisi say kadar olusturulan her veriyi okumak için imleci ilerletiyoruz
+    for(int i=1;i<(say+1);i++){
+        fseek(fl,i*boyut,SEEK_SET);
         fread(&calisan,boyut,1,fl);//
-        if(calisan.bilgi=='F'){//bilgi kısmı F olan yani bos olan ilk veriyi bularak yeni bilgileri kullanıcıdan aldıyoruz ve dosyada bulduðumuz ilk bos yere yazdırıyoruz
+        if(calisan.bilgi=='F'){
             printf("\n\tIsim : ");
             scanf("%s",&calisan.personel_ismi);
             printf("\n\tDepartman Ismi : ");
@@ -37,9 +37,9 @@ void kayit_ekle(FILE *fl)
             scanf("%s",&calisan.baslama_tarihi);
             printf("\n\tMaas : ");
             scanf("%lf",&calisan.maas);
-            calisan.bilgi='T'; // eklediğimiz verinin bilgi kısmını T yaparak aktif veri haline getiriyoruz
+            calisan.bilgi='T'; 
             for(int j=1;j<(say+1);j++){
-                fseek(fl,j*boyut,SEEK_SET);//kisi sayısı kadar olusturulan her veriyi okumak için imleci ilerlettik
+                fseek(fl,j*boyut,SEEK_SET);
                 fread(&kontrol,boyut,1,fl);
                 if(kontrol.bilgi=='T'){
                     if(kontrol.maas==calisan.maas){
