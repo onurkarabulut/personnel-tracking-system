@@ -419,7 +419,7 @@ void main (void)
             }
         fclose(fl);
     }
-    while(1!=2){//kullanıcı ve yönetici icin 2 arayüz var
+    while(1!=2){
         int sec;
         system("cls");
         printf("\n\tYONETICI ICIN -1\n\tKULLANICI ICIN -2\n\tLUTFEN SECIM YAPINIZ :");
